@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button-family{
+            display:flex;
+            flex-direction :  column;
+            justify-content: center;
+            align-items:center;
+            margin-top: 10%;
+        }
+        .btn {
+              background-color: black;
+              border-radius: 30px;
+              color: white;
+              padding: 16px 32px;
+              text-align: center;
+              font-size: 16px;
+              margin: 6px 2px;
+              opacity: 0.6;
+              font-weight:bold;
+              transition: 1s;
+
+         }
+         .btn:hover{
+            transform:scale(1.15,1.15);
+            opacity: 1
+         }
+
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div style="display:flex; justify-content : end; margin-right:5%;margin-top:3%">
+    <form th:action="@{/logout}"
+          method="POST">
+        <input class="btn btn-danger btn-sm mb-4" type="submit" value="logout"/>
+
+    </form>
+</div>
+
+<div>
+    <div th:switch="${role}" class ="button-family">
+
+        <div th:case="admin">
+            <form action="/users/list" method="post">
+                <button type="submit" class="btn"> manage users </button>
+            </form>
+            <form action="products/list" method="post">
+                <button type="submit" class="btn"> manage products </button>
+            </form>
+        </div>
+        <div th:case="*">
+            <form action="products/list" method="post">
+                <button type="submit" class="btn"> show products </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
