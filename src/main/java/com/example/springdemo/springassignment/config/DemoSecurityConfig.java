@@ -7,13 +7,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -28,15 +24,6 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-        //  use jdbc authentication
-//        auth.jdbcAuthentication().dataSource(securityDataSource);
-//        User.UserBuilder users=User.withDefaultPasswordEncoder();
-//
-//        auth.inMemoryAuthentication()
-//                .withUser(users.username("sowmya").password("sowmya").roles("MANAGER"))
-//                .withUser(users.username("varsha").password("varsha").roles("employee"))
-//                .withUser(users.username("ramani").password("ramani").roles("manager"));
 
 
         auth.jdbcAuthentication().dataSource(securityDataSource)

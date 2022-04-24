@@ -3,10 +3,11 @@ package com.example.springdemo.springassignment.dto;
 import com.example.springdemo.springassignment.dto.orders.OrderProductDto;
 import com.example.springdemo.springassignment.entity.Products;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CartModel {
+public class CartModel implements Serializable {
     private List<OrderProductDto> orderProductDtoList;
     private Integer totalPrice;
 

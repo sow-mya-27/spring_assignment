@@ -1,10 +1,6 @@
 package com.example.springdemo.springassignment.controller;
 
 import com.example.springdemo.springassignment.dto.CartModel;
-import com.example.springdemo.springassignment.entity.Products;
-import com.example.springdemo.springassignment.service.ProductService;
-import com.example.springdemo.springassignment.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;

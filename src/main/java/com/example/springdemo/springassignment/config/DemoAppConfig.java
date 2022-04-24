@@ -7,9 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -28,16 +26,6 @@ public class DemoAppConfig {
     //setup a logger
     private Logger logger=Logger.getLogger(getClass().getName());
 
-    //define a bean for viewResolver
-//    @Bean
-//    public ViewResolver viewResolver(){
-//        InternalResourceViewResolver viewResolver=new InternalResourceViewResolver();
-//        viewResolver.setPrefix("/WEB-INF/view/");
-//        viewResolver.setSuffix(".jsp");
-//        return  viewResolver;
-//    }
-
-    //define a bean for security datasource
     @Bean
     public DataSource securityDataSource(){
         //create connection pool
@@ -78,8 +66,7 @@ public class DemoAppConfig {
         String propVal=env.getProperty(propName);
 
         //now convert to int
-        int intPropVal=Integer.parseInt(propVal);
-        return intPropVal;
+        return  Integer.parseInt(propVal);
     }
 
 }

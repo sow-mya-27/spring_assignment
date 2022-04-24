@@ -1,10 +1,14 @@
 package com.example.springdemo.springassignment.entity;
 
 import javax.persistence.*;
-import java.util.HashMap;
+
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "order")
 public class Order {
 
@@ -32,35 +36,5 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUsers() {
-        return users;
-    }
-
-    public void setUsers(User users) {
-        this.users = users;
-    }
-
-    public List<Order_Product> getOrder_products() {
-        return order_products;
-    }
-
-    public void setOrder_products(List<Order_Product> order_products) {
-        this.order_products = order_products;
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
 }

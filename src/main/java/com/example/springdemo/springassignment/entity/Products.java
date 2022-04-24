@@ -1,9 +1,13 @@
 package com.example.springdemo.springassignment.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "product")
 public class Products {
 
@@ -34,27 +38,5 @@ public class Products {
     }
 
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

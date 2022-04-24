@@ -29,7 +29,7 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 //@ExtendWith(MockitoExtension.class)
-public class Repository {
+public class TestRepository {
     @Autowired
     private UserRepository userRepository;
 

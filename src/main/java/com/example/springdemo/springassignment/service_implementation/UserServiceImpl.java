@@ -1,6 +1,7 @@
 package com.example.springdemo.springassignment.service_implementation;
 
 import com.example.springdemo.springassignment.entity.User;
+import com.example.springdemo.springassignment.exceptions.NotFoundException;
 import com.example.springdemo.springassignment.repository.UserRepository;
 import com.example.springdemo.springassignment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
         }
         else {
             // we didn't find the employee
-            throw new RuntimeException("Did not find employee id - " + theId);
+            throw new NotFoundException("Did not find employee id - " + theId);
         }
 
         return theUser;
@@ -47,13 +48,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteById(int Id) {
-        userRepository.deleteById(Id);
+    public void deleteById(int id) {
+        userRepository.deleteById(id);
     }
 
-//    @Override
-//    public List<User> findByName(String name) {
-////        userRepository.
-//        return null;
-//    }
 }

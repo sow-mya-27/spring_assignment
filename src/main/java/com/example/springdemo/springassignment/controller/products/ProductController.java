@@ -11,11 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/products", method = {RequestMethod.GET, RequestMethod.POST})
 public class ProductController {
+
+    public void dealWithExceptions(Products theProduct){
+        Products product = productService.findById(theProduct.getId());
+        if(product==null){
+            throw new NotFoundException("product id not found"+theProduct.getId());
+        }
+    }
 
     @Autowired
     private UserService userService;
@@ -50,7 +56,6 @@ public class ProductController {
         // create model attribute to bind form data
         Products theProduct = new Products();
 
-
         model.addAttribute("products", theProduct);
 
         return "product-form";
@@ -59,10 +64,7 @@ public class ProductController {
     @PostMapping("/save")
     public String save(@ModelAttribute("products") Products theProduct )
     {
-        Products product = productService.findById(theProduct.getId());
-        if(product==null){
-            throw new NotFoundException("product id not found"+theProduct.getId());
-        }
+        dealWithExceptions(theProduct);
         productService.save(theProduct);
         return "redirect:/products/list";
     }
@@ -71,9 +73,7 @@ public class ProductController {
     public String showFormForUpdate(@RequestParam("productId") int id, Model model)
     {
         Products theProduct = productService.findById(id);
-        if(theProduct==null){
-            throw new NotFoundException("product id not found"+id);
-        }
+        dealWithExceptions(theProduct);
         model.addAttribute("products",theProduct);
         return "product-form";
     }
@@ -82,9 +82,7 @@ public class ProductController {
     public String delete(@RequestParam("productId") int id)
     {
         Products theProduct = productService.findById(id);
-        if(theProduct==null){
-            throw new NotFoundException("product id not found"+id);
-        }
+        dealWithExceptions(theProduct);
         productService.deleteById(id);
 
         return "redirect:/products/list";

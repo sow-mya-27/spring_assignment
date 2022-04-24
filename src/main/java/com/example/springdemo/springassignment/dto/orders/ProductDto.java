@@ -1,7 +1,12 @@
 package com.example.springdemo.springassignment.dto.orders;
 
 import com.example.springdemo.springassignment.entity.Products;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 public class ProductDto {
     private int id;
     private String name;
@@ -13,27 +18,5 @@ public class ProductDto {
         this.price = products.getPrice();
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
 }

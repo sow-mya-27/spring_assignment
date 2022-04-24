@@ -5,9 +5,7 @@ import com.example.springdemo.springassignment.dto.orders.OrderProductDto;
 import com.example.springdemo.springassignment.dto.orders.ProductDto;
 import com.example.springdemo.springassignment.entity.Products;
 import com.example.springdemo.springassignment.exceptions.NotFoundException;
-import com.example.springdemo.springassignment.repository.ProductRepository;
 import com.example.springdemo.springassignment.service.ProductService;
-import org.hibernate.validator.constraints.pl.REGON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/cart")
@@ -50,7 +47,6 @@ public class CartController {
         check(productId);
         if(productId!=null && productId!=0){
             Products products = productService.findById(productId);
-//        System.out.println(cartModel.getTotalPrice());
             if(cartModel == null){
                 System.out.println("null");
             }else{
@@ -66,7 +62,6 @@ public class CartController {
         }
         model.addAttribute("cart", a);
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("total",cartModel.getTotalPrice());
         return "list-cart";
     }
@@ -83,7 +78,6 @@ public class CartController {
         }
         model.addAttribute("cart", products1);
         cartModel.increment(productId,products);
-        String url="productId="+productId;
         return "redirect:/cart/";
     }
     @GetMapping("/decrement")
@@ -99,8 +93,6 @@ public class CartController {
         }
         model.addAttribute("cart", products1);
         cartModel.decrement(productId,products);
-        String url="productId="+productId;
-//        return "redirect:/products/list";
         return "redirect:/cart/";
     }
     @GetMapping("/")
@@ -114,8 +106,6 @@ public class CartController {
             quantity.add(o.getQuantity());
         }
         model.addAttribute("cart", a);
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("total",cartModel.getTotalPrice());
         return "list-cart";
     }

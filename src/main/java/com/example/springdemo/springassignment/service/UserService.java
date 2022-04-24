@@ -1,7 +1,7 @@
 package com.example.springdemo.springassignment.service;
 
 import com.example.springdemo.springassignment.entity.User;
-import org.springframework.data.jpa.repository.Query;
+
 
 import java.util.List;
 

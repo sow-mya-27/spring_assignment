@@ -1,15 +1,10 @@
 package com.example.springdemo.springassignment.controller.users;
 
-import com.example.springdemo.springassignment.dto.user.Login;
 import com.example.springdemo.springassignment.dto.user.Signup;
-import com.example.springdemo.springassignment.entity.Products;
 import com.example.springdemo.springassignment.entity.User;
 import com.example.springdemo.springassignment.exceptions.NotFoundException;
-import com.example.springdemo.springassignment.repository.UserRepository;
-import com.example.springdemo.springassignment.service.ProductService;
 import com.example.springdemo.springassignment.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +14,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/users", method = {RequestMethod.GET, RequestMethod.POST})
@@ -28,7 +22,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
     public String role(){
 
@@ -43,13 +36,11 @@ public class UserController {
 
     @PostMapping("/save")
     public String save(@Valid @ModelAttribute("users") Signup data, BindingResult result,Model model){
-        //model.addAttribute("users",userService.findAll());
         if (result.hasErrors()) {
             return "signup";
         }
         User user;
         if(data.getUsername().startsWith("admin")){
-            System.out.println("true");
             user=new User(data.getUsername(),data.getEmail(), "{noop}"+data.getPassword(),  "ROLE_ADMIN");
         }
         else {
@@ -62,7 +53,6 @@ public class UserController {
 
     @GetMapping("/list")
     public String listUser(Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("role",role());
         model.addAttribute("users",userService.findAll());
         return "list-users";

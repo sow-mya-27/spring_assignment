@@ -1,6 +1,7 @@
 package com.example.springdemo.springassignment.service_implementation;
 
 import com.example.springdemo.springassignment.entity.Products;
+import com.example.springdemo.springassignment.exceptions.NotFoundException;
 import com.example.springdemo.springassignment.repository.ProductRepository;
 import com.example.springdemo.springassignment.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
         }
         else {
             // we didn't find the employee
-            throw new RuntimeException("Did not find employee id - " + theId);
+            throw new NotFoundException("Did not find employee id - " + theId);
         }
 
         return theProduct;
@@ -43,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteById(int Id) {
-        productRepository.deleteById(Id);
+    public void deleteById(int id) {
+        productRepository.deleteById(id);
     }
 }
