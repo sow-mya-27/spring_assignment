@@ -1,6 +1,7 @@
 package com.example.springdemo.springassignment.controller.products;
 
 import com.example.springdemo.springassignment.entity.Products;
+import com.example.springdemo.springassignment.exceptions.NotFoundException;
 import com.example.springdemo.springassignment.repository.ProductRepository;
 import com.example.springdemo.springassignment.service.ProductService;
 import org.junit.jupiter.api.Assertions;
@@ -36,11 +37,15 @@ public class ProductControllerTest {
     @MockBean
     private ProductRepository productRepository;
 
-    @Test
+    @Test(expected = NotFoundException.class)
     public void testLoadByProductId() {
         Products product = new Products( "eraser", "2");
 
         when(productRepository.findById(product.getId())).thenReturn(Optional.of(product));
+
+        if(productService.findById(100)==null){
+            throw new NotFoundException("Did not find employee id - " + product.getId());
+        }
 
         Assert.assertEquals(product.getId(), productService.findById(product.getId()).getId());
     }
