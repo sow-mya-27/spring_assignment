@@ -1,11 +1,9 @@
 package com.example.springdemo.springassignment.controller.products;
 
 import com.example.springdemo.springassignment.entity.Products;
-import com.example.springdemo.springassignment.entity.User;
 import com.example.springdemo.springassignment.repository.ProductRepository;
-import com.example.springdemo.springassignment.repository.UserRepository;
 import com.example.springdemo.springassignment.service.ProductService;
-import com.example.springdemo.springassignment.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
