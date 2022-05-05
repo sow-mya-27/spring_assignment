@@ -61,6 +61,10 @@ public class UserController {
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model)
     {
+        if(role()=="ROLE_USER"){
+            throw new NotFoundException("users cannot access this page");
+        }
+
         // create model attribute to bind form data
         User theUser = new User();
 

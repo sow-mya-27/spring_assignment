@@ -35,9 +35,9 @@
         <!-- Add hidden form field to handle update -->
         <input type="hidden" th:field="*{id}" />
 
-        <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder=" name">
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder=" name" required>
 
-        <input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="price">
+        <input type="text" th:field="*{price}" class="form-control mb-4 col-4" placeholder="price" required>
 
 
         <button type="submit" class="btn btn-info col-2">Save</button>

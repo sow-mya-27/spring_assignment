@@ -15,6 +15,8 @@ public class AuthController {
 
     @GetMapping("/showMyLoginPage")
     public String showLoginPage(Model mode){
+
+
         return "login";
     }
 

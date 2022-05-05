@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DashBoardController {
 
 
+
     @GetMapping("/")
     public String sh(Model model, HttpServletRequest request){
 
@@ -27,7 +28,7 @@ public class DashBoardController {
         if(request.getSession().getAttribute("cart") == null){
             request.getSession().setAttribute("cart", new CartModel());
         }
-        return "customer";
+        return "redirect:/products/list";
     }
 
 

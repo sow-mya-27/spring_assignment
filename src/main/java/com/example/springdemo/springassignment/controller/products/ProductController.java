@@ -53,6 +53,10 @@ public class ProductController {
     @GetMapping("/showFormForAdd")
     public String showFormForAdd(Model model)
     {
+        if(role()=="ROLE_USER"){
+            throw new NotFoundException("users cannot access this page");
+        }
+
         // create model attribute to bind form data
         Products theProduct = new Products();
 
@@ -64,7 +68,7 @@ public class ProductController {
     @PostMapping("/save")
     public String save(@ModelAttribute("products") Products theProduct )
     {
-        dealWithExceptions(theProduct);
+//        dealWithExceptions(theProduct);
         productService.save(theProduct);
         return "redirect:/products/list";
     }

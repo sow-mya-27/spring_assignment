@@ -7,6 +7,7 @@
     <title>SignIn Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
     <!-- Reference Bootstrap files -->
     <link rel="stylesheet"
@@ -16,11 +17,27 @@
 
     <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script type="text/javascript">
+    funtion1=()=>{
+        const passwordEle = document.getElementById('password');
+        const toggleEle = document.getElementById('toggle');
+        const type = passwordEle.getAttribute('type');
+
+        passwordEle.setAttribute(
+                'type',
+                // Switch it to a text field if it's a password field
+                // currently, and vice versa
+                type === 'password' ? 'text' : 'password'
+         );
+}
+    </script>
+
 </head>
 
 <body>
 
 <div >
+
 
     <div id="loginbox" style="margin-top: 5%;margin-left:40%"
          class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
@@ -29,6 +46,9 @@
 
             <div class="panel-heading">
                 <div class="panel-title">Sign In</div>
+            </div>
+            <div th:if="${param.error}" class="alert alert-danger">
+                Invalid username and password.
             </div>
 
             <div style="padding-top: 30px" class="panel-body">
@@ -51,9 +71,12 @@
 
                     <!-- Password -->
                     <div style="margin-bottom: 25px" class="input-group">
+
                         <span class="input-group-addon"><em class="glyphicon glyphicon-lock"></em></span>
 
-                        <input type="password" name="password" placeholder="password" class="form-control" >
+                        <input type="password" name="password"  placeholder="password"  id="password" style="" class="form-control">
+                        <i class="far fa-eye" id="toggle" style="margin-left: -30px; cursor: pointer;" onclick="funtion1()"></i>
+
                     </div>
 
 

@@ -4,7 +4,7 @@ import com.example.springdemo.springassignment.entity.Products;
 
 public class OrderProductDto {
     private Integer quantity;
-    private ProductDto productDto;
+    private ProductDto   productDto;
 
     public OrderProductDto(Integer quantity, Products products){
         this.quantity = quantity;

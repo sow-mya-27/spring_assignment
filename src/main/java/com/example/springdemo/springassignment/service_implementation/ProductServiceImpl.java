@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
         }
         else {
             // we didn't find the employee
-            throw new NotFoundException("Did not find employee id - " + theId);
+            throw new NotFoundException("Did not find product id - " + theId);
         }
 
         return theProduct;

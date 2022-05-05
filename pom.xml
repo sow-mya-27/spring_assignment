@@ -29,7 +29,11 @@
 		<sonar.language>java</sonar.language>
 		<sonar.exclusions>
 			**/com/example/springdemo/springassignment/repository/**,
-			**/com/example/springdemo/springassignment/controller/**,
+			**/com/example/springdemo/springassignment/controller/products/ProductController.java,
+			**/com/example/springdemo/springassignment/controller/users/UserController.java,
+			**/com/example/springdemo/springassignment/controller/CartController.java,
+			**/com/example/springdemo/springassignment/controller/DashBoardController.java,
+<!--			**/com/example/springdemo/springassignment/controller/**,-->
 			**/com/example/springdemo/springassignment/dto/**,
 			**/com/example/springdemo/springassignment/entity/**,
 			**/com/example/springdemo/springassignment/exceptions/**,
@@ -37,6 +41,8 @@
 			**/com/example/springdemo/springassignment/config/MySpringMvcDispatcherServletInitializer.java,
 			**/com/example/springdemo/springassignment/config/SecurityWebAppInitializer.java,
 			**/com/example/springdemo/springassignment/SpringbootDemoProjectApplication**,
+			**/com/example/springdemo/springassignment/service_implementation/**,
+			**/com/example/springdemo/springassignment/SpringAssignmentApplication.java,
 		</sonar.exclusions>
 	</properties>
 	<dependencies>

@@ -27,7 +27,6 @@ import org.junit.jupiter.api.Assertions;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@Transactional
 public class UserServiceImplTest {
 
     @Autowired
